@@ -61,7 +61,7 @@ class HomeController extends ChangeNotifier {
   Position? get initialPosition => _initialPosition;
 
   // Imagen como marcador
-  //final _chavezIcon = Completer<BitmapDescriptor>();  // Polylines
+  final _chavezIcon = Completer<BitmapDescriptor>();  // Polylines
 
   bool _loading = true;
   bool get loading => _loading;
@@ -215,12 +215,12 @@ class HomeController extends ChangeNotifier {
   }
 
   void onTap(LatLng position) async {
-    /* Marcador
+    // Marcador
     final id = _markers.length.toString();
     final markerId = MarkerId(id);
 
     // Imagen como marcador
-    final icon = await _chavezIcon.future;
+    //final icon = await _chavezIcon.future;
 
     final marker = Marker(
         markerId: markerId,
@@ -238,8 +238,8 @@ class HomeController extends ChangeNotifier {
         });
 
     _markers[markerId] = marker;
-    //notifyListeners();
-    */
+    notifyListeners();
+    
     
 
     /* Polylines
@@ -270,7 +270,7 @@ class HomeController extends ChangeNotifier {
     notifyListeners();
     */
     
-    
+    /*
     final polygonId = PolygonId(_polygonId);
     late Polygon polygon;
     if (_polygons.containsKey(polygonId)) {
@@ -291,7 +291,7 @@ class HomeController extends ChangeNotifier {
 
     _polygons[polygonId] = polygon;
     notifyListeners();
-    
+    */
   }
 
   @override

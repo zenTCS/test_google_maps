@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_test/app/ui/pages/home/home_page.dart';
 import 'package:google_maps_test/app/ui/pages/routes/pages.dart';
 import 'package:google_maps_test/app/ui/pages/routes/routes.dart';
 
