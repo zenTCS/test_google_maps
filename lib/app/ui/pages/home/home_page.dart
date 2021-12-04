@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_test/app/ui/pages/home/home_controller.dart';
 import 'package:google_maps_test/app/ui/pages/home/widgets/google_map.dart';
+import 'package:google_maps_test/app/ui/pages/routes/routes.dart';
 import 'package:provider/provider.dart';
 
 /* Al usar un provider, ya no es necesario usar StatefulWidget
@@ -38,23 +39,29 @@ class HomePage extends StatelessWidget {
           appBar: AppBar(
             title: const Text('Google Maps Test'),
             actions: [
-              Builder(
-                builder: (context) => IconButton(
-                  onPressed: () {
-                    final controller = context.read<HomeController>();
-                    controller.newPolyline();
-                  },
-                  icon: const Icon(Icons.add),
-                ),
-              ),
-              Builder(
-                builder: (context) => IconButton(
-                  onPressed: () {
-                    final controller = context.read<HomeController>();
-                    controller.newPolygon();
-                  },
-                  icon: const Icon(Icons.map),
-                ),
+              // Builder(
+              //   builder: (context) => IconButton(
+              //     onPressed: () {
+              //       final controller = context.read<HomeController>();
+              //       controller.newPolyline();
+              //     },
+              //     icon: const Icon(Icons.add),
+              //   ),
+              // ),
+              // Builder(
+              //   builder: (context) => IconButton(
+              //     onPressed: () {
+              //       final controller = context.read<HomeController>();
+              //       controller.newPolygon();
+              //     },
+              //     icon: const Icon(Icons.map),
+              //   ),
+              // )
+              IconButton(
+                onPressed: (){
+                  Navigator.pop(context, Routes.LOGIN);
+                },
+                icon: const Icon(Icons.logout)
               )
             ],
           ),

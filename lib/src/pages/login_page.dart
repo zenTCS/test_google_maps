@@ -73,7 +73,6 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _bottonLogin() {
-    bool band = true;
     return StreamBuilder(
       builder: (BuildContext context, AsyncSnapshot snapshot){
         return ElevatedButton(
@@ -87,12 +86,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           onPressed: (){
-            if(band == false){
-              Navigator.pushNamed(context, Routes.SPLASH);
-            }
-            else{
-              Navigator.pushNamed(context, Routes.LOGIN);
-            }
+            Navigator.pushNamed(context, Routes.SPLASH);
           }
         );
       }
