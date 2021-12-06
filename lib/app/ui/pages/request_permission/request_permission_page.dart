@@ -19,7 +19,6 @@ class _RequestPermissionPageState extends State<RequestPermissionPage>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     WidgetsBinding.instance!.addObserver(this);
     _subscription = _controller.onStatusChanged.listen((status) {
@@ -52,13 +51,10 @@ class _RequestPermissionPageState extends State<RequestPermissionPage>
           );
         break;
         case PermissionStatus.denied:
-          // TODO: Handle this case.
           break;
         case PermissionStatus.restricted:
-          // TODO: Handle this case.
           break;
         case PermissionStatus.limited:
-          // TODO: Handle this case.
           break;
       }
     });
@@ -74,7 +70,6 @@ class _RequestPermissionPageState extends State<RequestPermissionPage>
         _goToHome();
       }
     }
-
     _fromSettings = false;
   }
 
@@ -83,7 +78,6 @@ class _RequestPermissionPageState extends State<RequestPermissionPage>
     WidgetsBinding.instance!.removeObserver(this);
     _subscription.cancel();
     _controller.dispose();
-    // TODO: implement dispose
     super.dispose();
   }
 
@@ -95,17 +89,18 @@ class _RequestPermissionPageState extends State<RequestPermissionPage>
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Container(
-        width: double.infinity,
-        height: double.infinity,
-        alignment: Alignment.center,
-        child: ElevatedButton(
-          onPressed: () {
-            _controller.request();
-          },
-          child: const Text('Allow'),
-        ),
-      )),
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          alignment: Alignment.center,
+          child: ElevatedButton(
+            onPressed: () {
+              _controller.request();
+            },
+            child: const Text('Allow'),
+          ),
+        )
+      ),
     );
   }
 }

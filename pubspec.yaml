@@ -68,6 +68,7 @@ flutter:
     - assets/chavez2.png
     - assets/map_icon.png
     - assets/car.png
+    - assets/mc.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

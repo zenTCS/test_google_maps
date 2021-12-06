@@ -13,13 +13,13 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-          image: NetworkImage('https://wallpaperaccess.com/full/1269989.jpg'),
-          fit: BoxFit.cover,
-        )),
+        // decoration: const BoxDecoration(
+        //     image: DecorationImage(
+        //   image: NetworkImage('https://wallpaperaccess.com/full/1269989.jpg'),
+        //   fit: BoxFit.cover,
+        // )),
         child: Scaffold(
-          backgroundColor: Colors.transparent,
+          // backgroundColor: Colors.transparent,
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
