@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart'
     show ChangeNotifier, ImageConfiguration, Offset, Size;
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:google_maps_test/app/heipers/asset_to_bytes.dart';
+import 'package:google_maps_test/app/helpers/asset_to_bytes.dart';
 import 'package:google_maps_test/app/ui/utils/map_style.dart';
 import 'package:geolocator/geolocator.dart';
 

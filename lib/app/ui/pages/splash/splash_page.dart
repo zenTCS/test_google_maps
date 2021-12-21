@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_test/app/ui/pages/login/login_page.dart';
 import 'package:google_maps_test/app/ui/pages/routes/routes.dart';
 import 'package:google_maps_test/app/ui/pages/splash/splash_controller.dart';
-import 'package:google_maps_test/src/pages/login_page.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class SplashPage extends StatefulWidget {
