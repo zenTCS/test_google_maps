@@ -41,6 +41,8 @@ dependencies:
   geolocator: ^7.7.1
   sliding_up_panel: ^2.0.0+1
   intl: ^0.17.0
+  connectivity: ^3.0.6
+  flutter_offline: "^2.0.0"
 
 dev_dependencies:
   flutter_test:

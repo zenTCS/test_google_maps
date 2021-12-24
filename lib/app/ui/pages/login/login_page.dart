@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_test/app/ui/pages/login/login_controller.dart';
 import 'package:google_maps_test/app/ui/pages/routes/routes.dart';
+import 'package:provider/provider.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class LoginPage extends StatelessWidget {
+  const LoginPage({ Key? key }) : super(key: key);
 
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<LoginController>(context);
+
     return SafeArea(
       child: Container(
         // decoration: const BoxDecoration(
@@ -33,15 +32,15 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 15.0,
                 ),
-                _userrTextField(),
+                _userrTextField(context),
                 const SizedBox(
-                  height: 15.0,
+                  height: 10.0,
                 ),
-                _passwordTextField(),
+                _passwordTextField(context),
                 const SizedBox(
-                  height: 15.0,
+                  height: 20.0,
                 ),
-                _bottonLogin(),
+                _bottonLogin(context),
               ],
             ),
           ),
@@ -50,42 +49,56 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _userrTextField() {
+  Widget _userrTextField(BuildContext context) {
+    final controller = Provider.of<LoginController>(context);
+
     return StreamBuilder(
         builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 40.0),
-        child: const TextField(
+        child: TextField(
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
-            icon: Icon(Icons.email),
+            icon: const Icon(Icons.email),
             hintText: 'example@correo.com',
             labelText: 'Email',
+            errorText: controller.usernameTextV!.error,
           ),
+          onChanged: (String value){
+            controller.usernameChanged(value);
+          }
         ),
       );
     });
   }
 
-  Widget _passwordTextField() {
+  Widget _passwordTextField(BuildContext context) {
+    final controller = Provider.of<LoginController>(context);
+
     return StreamBuilder(
         builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 40.0),
-        child: const TextField(
+        child: TextField(
           keyboardType: TextInputType.emailAddress,
           obscureText: true,
           decoration: InputDecoration(
-            icon: Icon(Icons.lock),
+            icon: const Icon(Icons.lock),
             hintText: 'Password',
             labelText: 'Password',
+            errorText: controller.passwordTextV!.error,
           ),
+          onChanged: (String value){
+            controller.passwordChanged(value);
+          }
         ),
       );
     });
   }
 
-  Widget _bottonLogin() {
+  Widget _bottonLogin(BuildContext context) {
+    final controller = Provider.of<LoginController>(context);
+
     return StreamBuilder(
         builder: (BuildContext context, AsyncSnapshot snapshot) {
       return ElevatedButton(
@@ -98,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           onPressed: () {
-            Navigator.pushNamed(context, Routes.SPLASH);
+            (!controller.validate) ? null : Navigator.pushNamed(context, Routes.SPLASH);
           });
     });
   }

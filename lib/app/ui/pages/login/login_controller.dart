@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_test/app/helpers/valid_name_and_pass.dart';
 import 'package:google_maps_test/app/helpers/validators.dart';
 
-class LoginController {
+class LoginController with ChangeNotifier{
   final formKey = GlobalKey<FormState>();
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
@@ -14,8 +14,6 @@ class LoginController {
   
   ValidationItem? usernameTextV = ValidationItem(null, null);
   ValidationItem? passwordTextV = ValidationItem(null, null);
-
-  LoginController({required String usename, required String password});
 
   ValidationItem get username => usernameTextV!;
   ValidationItem get password => passwordTextV!;
@@ -29,7 +27,7 @@ class LoginController {
     }
   }
 
-  String? usernameCahnged(String text){
+  String? usernameChanged(String text){
     if (text.isEmpty) {
       usernameTextV = ValidationItem(null, 'This field is required');
     }
@@ -45,11 +43,13 @@ class LoginController {
     else {
       usernameTextV = ValidationItem(text, null);
     }
+
+    notifyListeners();
   }
 
   String? passwordChanged(String text) {
     if (text.isEmpty) {
-      passwordTextV = ValidationItem(null, 'This flied is required');
+      passwordTextV = ValidationItem(null, 'This field is required');
     } else if (text.length < 6) {
       passwordTextV = ValidationItem(null, 'Data length less than the minimum required');
     } else if (text.length > 12) {
@@ -59,6 +59,8 @@ class LoginController {
     } else {
       passwordTextV = ValidationItem(text, null);
     }
+
+    notifyListeners();
   }
 
   void passwordVisibleToggle() {
@@ -68,5 +70,7 @@ class LoginController {
       iconPassword = Icons.visibility_off_rounded;
     }
     passwordVisible = !passwordVisible;
+    
+    notifyListeners();
   }
 }
