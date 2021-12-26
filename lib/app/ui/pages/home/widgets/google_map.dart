@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_test/app/ui/pages/home/widgets/connectivity_page.dart';
 import 'package:provider/provider.dart';
 
 import '../home_controller.dart';
@@ -17,47 +18,55 @@ class MapView extends StatelessWidget {
         }
 
         final initialCameraPosition = CameraPosition(
-            target: LatLng(controller.initialPosition!.latitude,
-                controller.initialPosition!.longitude),
-            zoom: 16.5);
+          target: LatLng(
+            controller.initialPosition!.latitude,
+            controller.initialPosition!.longitude
+          ),
+          zoom: 16.5
+        );
 
-        return GoogleMap(
-          markers: controller.markers,
-          polylines: controller.polylines,
-          polygons: controller.polygons,
-          onMapCreated: controller.onMapCreated,
-          //initialCameraPosition: controller.initialCameraPosition,
-          initialCameraPosition: initialCameraPosition,
-
-          // Bloquear boton de direccion
-          myLocationEnabled: true,
-          myLocationButtonEnabled: true,
-          // Bloquear movimiento del mapa(movimiento)
-          // scrollGesturesEnabled: false,
-
-          // Bloquear zoom
-          zoomGesturesEnabled: false,
-
-          // Mostrar boton de zoom(Disponible solo para android)
-          zoomControlsEnabled: true,
-
-          // Tipo de mapa
-          mapType: MapType.normal,
-
-          /*
-                  onTap: (position){
-                    print( position);
-                  },
-                  */
-
-          onLongPress: (position) {
-            print(position);
-          },
-
-          // Esconder compas
-          compassEnabled: false,
-
-          onTap: controller.onTap,
+        return Stack(
+          children: [
+            GoogleMap(
+              markers: controller.markers,
+              polylines: controller.polylines,
+              polygons: controller.polygons,
+              onMapCreated: controller.onMapCreated,
+              //initialCameraPosition: controller.initialCameraPosition,
+              initialCameraPosition: initialCameraPosition,
+          
+              // Bloquear boton de direccion
+              myLocationEnabled: true,
+              myLocationButtonEnabled: true,
+              // Bloquear movimiento del mapa(movimiento)
+              // scrollGesturesEnabled: false,
+          
+              // Bloquear zoom
+              zoomGesturesEnabled: false,
+          
+              // Mostrar boton de zoom(Disponible solo para android)
+              zoomControlsEnabled: true,
+          
+              // Tipo de mapa
+              mapType: MapType.normal,
+          
+              /*
+                      onTap: (position){
+                        print( position);
+                      },
+                      */
+          
+              onLongPress: (position) {
+                print(position);
+              },
+          
+              // Esconder compas
+              compassEnabled: false,
+          
+              onTap: controller.onTap,
+            ),
+            const ConnetivityPage(),
+          ] 
         );
       },
       child: Center(

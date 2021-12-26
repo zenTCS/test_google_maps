@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_test/app/ui/pages/connectivity/connection_status_model.dart';
 import 'package:google_maps_test/app/ui/pages/login/login_controller.dart';
 import 'package:google_maps_test/app/ui/pages/routes/pages.dart';
 import 'package:google_maps_test/app/ui/pages/routes/routes.dart';
@@ -17,6 +18,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => LoginController()
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ConnectionStatusModel()
         )
       ],
       child: MaterialApp(
