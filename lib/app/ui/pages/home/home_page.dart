@@ -1,3 +1,6 @@
+import 'dart:html';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_test/app/ui/pages/home/home_controller.dart';
 import 'package:google_maps_test/app/ui/pages/home/widgets/google_map.dart';
@@ -59,7 +62,7 @@ class HomePage extends StatelessWidget {
               // )
               IconButton(
                 onPressed: (){
-                  Navigator.pop(context, Routes.LOGIN);
+                  _logout(context);
                 },
                 icon: const Icon(Icons.logout)
               )
@@ -77,6 +80,34 @@ class HomePage extends StatelessWidget {
               child: const Center(
                 child: CircularProgressIndicator(),
               ))),
+    );
+  }
+
+  Future<void> _logout(BuildContext context){
+    return showDialog(
+      context: context, 
+      builder: (BuildContext context){
+        return CupertinoAlertDialog(
+          title: const Text('Important', textAlign: TextAlign.center,),
+          content: const Text('Are you sure you want to logout?'),
+          actions: [
+            CupertinoDialogAction(
+              child: const Text(
+                'Cancel', 
+                style: TextStyle(color: Colors.black),
+              ),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            CupertinoDialogAction(
+              child: const Text(
+                'Accept',
+                style: TextStyle(color: Colors.black),
+              ),
+              onPressed: () => Navigator.pop(context, Routes.SIGNIN),
+            )
+          ],
+        );
+      }
     );
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_test/app/ui/pages/home/widgets/buttons/go_to_my_position.dart';
+import 'package:google_maps_test/app/ui/pages/home/widgets/buttons/zoom.dart';
 import 'package:google_maps_test/app/ui/pages/home/widgets/connectivity_page.dart';
 import 'package:provider/provider.dart';
 
@@ -37,15 +39,15 @@ class MapView extends StatelessWidget {
           
               // Bloquear boton de direccion
               myLocationEnabled: true,
-              myLocationButtonEnabled: true,
+              myLocationButtonEnabled: false,
               // Bloquear movimiento del mapa(movimiento)
               // scrollGesturesEnabled: false,
           
               // Bloquear zoom
-              zoomGesturesEnabled: false,
+              zoomGesturesEnabled: true,
           
               // Mostrar boton de zoom(Disponible solo para android)
-              zoomControlsEnabled: true,
+              zoomControlsEnabled: false,
           
               // Tipo de mapa
               mapType: MapType.normal,
@@ -65,6 +67,8 @@ class MapView extends StatelessWidget {
           
               onTap: controller.onTap,
             ),
+            const ZoomPosition(),
+            const GoToMyPositionButton(),
             const ConnetivityPage(),
           ] 
         );

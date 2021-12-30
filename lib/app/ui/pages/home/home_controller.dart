@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart'
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_test/app/helpers/asset_to_bytes.dart';
+import 'package:google_maps_test/app/ui/pages/home/widgets/set_zoom.dart';
 import 'package:google_maps_test/app/ui/utils/map_style.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -292,6 +293,28 @@ class HomeController extends ChangeNotifier {
     _polygons[polygonId] = polygon;
     notifyListeners();
     */
+  }
+
+  Future<void> zoomIn() async {
+    if (_mapController != null) {
+      await setZoom(_mapController!, true);
+    }
+  }
+
+  Future<void> zoomOut() async {
+    if (_mapController != null) {
+      await setZoom(_mapController!, false);
+    }
+  }
+
+  // my position button
+  Future<void> goToMyPosition() async {
+    final zoom = await _mapController!.getZoomLevel();
+    final cameraUpdate = CameraUpdate.newLatLngZoom(
+      LatLng(_lastPosition!.latitude, _lastPosition!.longitude),
+      zoom < 18 ? 18 : zoom,
+    );
+    return _mapController!.animateCamera(cameraUpdate);
   }
 
   @override

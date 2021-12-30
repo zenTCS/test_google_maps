@@ -3,6 +3,7 @@ import 'package:google_maps_test/app/ui/pages/connectivity/connection_status_mod
 import 'package:google_maps_test/app/ui/pages/login/login_controller.dart';
 import 'package:google_maps_test/app/ui/pages/routes/pages.dart';
 import 'package:google_maps_test/app/ui/pages/routes/routes.dart';
+import 'package:google_maps_test/app/ui/pages/sign_in/sign_in_controller.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -17,6 +18,9 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
+          create: (_) => SignInController()
+        ),
+        ChangeNotifierProvider(
           create: (_) => LoginController()
         ),
         ChangeNotifierProvider(
@@ -30,7 +34,7 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
           primarySwatch: Colors.blue,
         ),
-        initialRoute: Routes.LOGIN,
+        initialRoute: Routes.SIGNIN,
         routes: appRoutes(),
       )
     );

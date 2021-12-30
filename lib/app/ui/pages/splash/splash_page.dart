@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_test/app/ui/pages/login/login_page.dart';
 import 'package:google_maps_test/app/ui/pages/routes/routes.dart';
+import 'package:google_maps_test/app/ui/pages/sign_in/sign_in_page.dart';
 import 'package:google_maps_test/app/ui/pages/splash/splash_controller.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -31,7 +32,7 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: LoginPage(),
+        child: SignInPage(),
       ),
     );
   }

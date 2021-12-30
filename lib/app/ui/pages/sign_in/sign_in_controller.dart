@@ -2,19 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_test/app/helpers/valid_name_and_pass.dart';
 import 'package:google_maps_test/app/helpers/validators.dart';
 
-class LoginController with ChangeNotifier{
+class SignInController with ChangeNotifier{
   final formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
+  final emailFocusNode = FocusNode();
   final usernameFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
 
   bool passwordVisible = true;
   IconData iconPassword = Icons.visibility_off_rounded;
   
+  ValidationItem? emailTextV = ValidationItem(null, null);
   ValidationItem? usernameTextV = ValidationItem(null, null);
   ValidationItem? passwordTextV = ValidationItem(null, null);
 
+  ValidationItem get email => emailTextV!;
   ValidationItem get username => usernameTextV!;
   ValidationItem get password => passwordTextV!;
 
@@ -25,6 +29,23 @@ class LoginController with ChangeNotifier{
     } else {
       return false;
     }
+  }
+
+  String? emailChanged(String text){
+    if (text.isEmpty) {
+      emailTextV = ValidationItem(null, 'This field is required');
+    }
+    else if (text.length >= 20){
+      emailTextV = ValidationItem(null, 'Data length less than the maximum required');
+    }
+    else if (!text.isValidUsername) {
+      emailTextV = ValidationItem(null, 'Invalid Data');
+    }
+    else {
+      emailTextV = ValidationItem(text, null);
+    }
+
+    notifyListeners();
   }
 
   String? usernameChanged(String text){

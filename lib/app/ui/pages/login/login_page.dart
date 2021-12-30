@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_test/app/ui/pages/login/login_controller.dart';
 import 'package:google_maps_test/app/ui/pages/routes/routes.dart';
+import 'package:google_maps_test/app/ui/pages/widgets/global_alert.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
@@ -18,29 +21,31 @@ class LoginPage extends StatelessWidget {
         //   fit: BoxFit.cover,
         // )),
         child: Scaffold(
-          // backgroundColor: Colors.transparent,
+          backgroundColor: Colors.white,
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Flexible(
                   child: Image.asset(
-                    'assets/chavez2.png',
+                    'assets/login.png',
                     height: 300.0,
+                    width: 320.0,
                   ),
                 ),
-                const SizedBox(
-                  height: 15.0,
-                ),
+                // const SizedBox(
+                //   height: 10.0,
+                // ),
                 _userrTextField(context),
                 const SizedBox(
-                  height: 10.0,
+                  height: 2.0,
                 ),
                 _passwordTextField(context),
                 const SizedBox(
-                  height: 20.0,
+                  height: 15.0,
                 ),
                 _bottonLogin(context),
+                _registerNow(context),
               ],
             ),
           ),
@@ -56,8 +61,10 @@ class LoginPage extends StatelessWidget {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 40.0),
-        child: TextField(
+        child: TextFormField(
           keyboardType: TextInputType.emailAddress,
+          maxLength: 20,
+          controller: controller.usernameController,
           decoration: InputDecoration(
             icon: const Icon(Icons.email),
             hintText: 'example@correo.com',
@@ -79,9 +86,11 @@ class LoginPage extends StatelessWidget {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 40.0),
-        child: TextField(
+        child: TextFormField(
           keyboardType: TextInputType.emailAddress,
           obscureText: true,
+          maxLength: 12,
+          controller: controller.passwordController,
           decoration: InputDecoration(
             icon: const Icon(Icons.lock),
             hintText: 'Password',
@@ -99,20 +108,40 @@ class LoginPage extends StatelessWidget {
   Widget _bottonLogin(BuildContext context) {
     final controller = Provider.of<LoginController>(context);
 
-    return StreamBuilder(
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-      return ElevatedButton(
-          child: Container(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-            child: const Text(
-              'Sign In',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-            ),
-          ),
-          onPressed: () {
-            (!controller.validate) ? null : Navigator.pushNamed(context, Routes.SPLASH);
-          });
-    });
+    return Consumer<LoginController>(
+      builder: (context, model, child) => CupertinoButton(
+        disabledColor: const Color(0XFF2196F3).withOpacity(0.7),
+        pressedOpacity: 1,
+        child: const Text('Log In'),
+        color:
+            model.validate ? const Color(0XFF2196F3) : const Color(0XFF2196F3).withOpacity(0.4),
+        borderRadius: BorderRadius.circular(20),
+        onPressed: () {
+          (!controller.validate) 
+            ? showAlert(
+                context, 
+                msg: 'Incorrect username and/or password or empty field', 
+                title: 'Important'
+              )
+            : Navigator.pushNamed(context, Routes.SPLASH);
+        }
+      )
+    );
+  }
+
+  Widget _registerNow(BuildContext context){
+    return Padding(
+      padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GestureDetector(
+            onTap: () => Navigator.of(context).pushNamed(Routes.SIGNIN),
+            child: const Text('Register Now', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),),
+          )
+        ],
+      ),
+    );
   }
 }
+
