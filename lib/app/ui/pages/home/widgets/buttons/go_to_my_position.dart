@@ -19,7 +19,7 @@ class GoToMyPositionButton extends StatelessWidget {
             onPressed: () => context.read<HomeController>().goToMyPosition(), 
             elevation: 0,
           ),
-          const SizedBox(height: 120,)
+          const SizedBox(height: 80,)
         ],
       )
     );

@@ -3,6 +3,7 @@ import 'package:google_maps_test/app/ui/pages/home/home_page.dart';
 import 'package:google_maps_test/app/ui/pages/login/login_page.dart';
 import 'package:google_maps_test/app/ui/pages/request_permission/request_permission_page.dart';
 import 'package:google_maps_test/app/ui/pages/routes/routes.dart';
+import 'package:google_maps_test/app/ui/pages/search_place/search_place_page.dart';
 import 'package:google_maps_test/app/ui/pages/sign_in/sign_in_page.dart';
 import 'package:google_maps_test/app/ui/pages/splash/splash_page.dart';
 

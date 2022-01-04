@@ -22,6 +22,27 @@ class ConnetivityPage extends StatelessWidget {
                 color: model.isOnline ? null : const Color(0xFFEE4400),
                 child: model.isOnline
                   ? null
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: const [
+                    //     Text(
+                    //       "Conectando al servidor",
+                    //       style: TextStyle(color: Colors.white),
+                    //     ),
+                    //     SizedBox(
+                    //       width: 8.0,
+                    //     ),
+                    //     SizedBox(
+                    //       width: 12.0,
+                    //       height: 12.0,
+                    //       child: CircularProgressIndicator(
+                    //         strokeWidth: 2.0,
+                    //         valueColor: AlwaysStoppedAnimation<Color>(
+                    //             Colors.white),
+                    //       ),
+                    //     ),
+                    //   ],
+                    // )
                   : Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [

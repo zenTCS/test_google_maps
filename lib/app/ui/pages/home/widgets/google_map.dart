@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_test/app/ui/pages/home/widgets/buttons/go_to_my_position.dart';
+import 'package:google_maps_test/app/ui/pages/home/widgets/buttons/where_are_you_going.dart';
 import 'package:google_maps_test/app/ui/pages/home/widgets/buttons/zoom.dart';
 import 'package:google_maps_test/app/ui/pages/home/widgets/connectivity_page.dart';
+import 'package:google_maps_test/app/ui/pages/home/widgets/custom_painters/origin_and_destination.dart';
 import 'package:provider/provider.dart';
 
 import '../home_controller.dart';
@@ -67,7 +69,9 @@ class MapView extends StatelessWidget {
           
               onTap: controller.onTap,
             ),
-            const ZoomPosition(),
+            const WhereAreYouGoingButton(),
+            // const OriginAndDestination(),
+            // const ZoomPosition(),
             const GoToMyPositionButton(),
             const ConnetivityPage(),
           ] 
