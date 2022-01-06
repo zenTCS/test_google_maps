@@ -45,6 +45,7 @@ class LoginPage extends StatelessWidget {
                   height: 15.0,
                 ),
                 _bottonLogin(context),
+                _forgotPassword(context),
                 _registerNow(context),
               ],
             ),
@@ -129,6 +130,27 @@ class LoginPage extends StatelessWidget {
     );
   }
 
+  Widget _forgotPassword(BuildContext context){
+    return Padding(
+      padding: const EdgeInsets.only(top: 15.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GestureDetector(
+            onTap: () {
+              showAlert(
+                context, 
+                msg: 'Will be disabled for 24 hours after you make this change to protect your account.', 
+                title: 'Reset Your Password'
+              );
+            },
+            child: const Text('Forgot password?', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),),
+          )
+        ],
+      ),
+    );
+  }
+
   Widget _registerNow(BuildContext context){
     return Padding(
       padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
@@ -137,7 +159,7 @@ class LoginPage extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () => Navigator.of(context).pushNamed(Routes.SIGNIN),
-            child: const Text('Register Now', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),),
+            child: const Text('Register now', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),),
           )
         ],
       ),

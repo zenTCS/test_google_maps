@@ -25,20 +25,23 @@ class SearchInputs extends StatelessWidget {
     final controller =
         Provider.of<SearchPlaceController>(context, listen: false);
 
-    return Padding(
-      padding: const EdgeInsets.only(top: 32.0, right: 10.0, left: 10.0),
-      child: TextFormField(
-        controller: controller.originController,
-        focusNode: controller.originFocusNode,
-        decoration: InputDecoration(
-          labelText: 'Origen',
-          labelStyle: const TextStyle(color: Colors.grey),
-          icon: const Icon(Icons.home_rounded, color: Color(0xFF9E9E9E)),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(15.0))
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 32.0, right: 10.0, left: 10.0),
+        child: TextFormField(
+          controller: controller.originController,
+          focusNode: controller.originFocusNode,
+          decoration: InputDecoration(
+            labelText: 'Origen',
+            labelStyle: const TextStyle(color: Colors.grey),
+            icon: const Icon(Icons.home_rounded, color: Color(0xFF9E9E9E)),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(15.0))
+          ),
+          onChanged: (String value){
+            controller.onQueryChanged(value);
+          },
         ),
-        onChanged: (String value){
-          controller.onQueryChanged(value);
-        },
       ),
     );
   }
@@ -47,20 +50,23 @@ class SearchInputs extends StatelessWidget {
     final controller =
         Provider.of<SearchPlaceController>(context, listen: false);
 
-    return Padding(
-      padding: const EdgeInsets.only(right: 10.0, left: 10.0),
-      child: TextFormField(
-        controller: controller.destinationController,
-        focusNode: controller.destinationFocusNode,
-        decoration: InputDecoration(
-          labelText: 'Destino',
-          labelStyle: const TextStyle(color: Colors.grey),
-          icon: const Icon(Icons.deck_sharp, color: Color(0xFF9E9E9E)),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(15.0))
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: Padding(
+        padding: const EdgeInsets.only(right: 10.0, left: 10.0),
+        child: TextFormField(
+          controller: controller.destinationController,
+          focusNode: controller.destinationFocusNode,
+          decoration: InputDecoration(
+            labelText: 'Destino',
+            labelStyle: const TextStyle(color: Colors.grey),
+            icon: const Icon(Icons.deck_sharp, color: Color(0xFF9E9E9E)),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(15.0))
+          ),
+          onChanged: (String value){
+            controller.onQueryChanged(value);
+          },
         ),
-        onChanged: (String value){
-          controller.onQueryChanged(value);
-        },
       ),
     );
   }

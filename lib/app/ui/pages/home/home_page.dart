@@ -37,47 +37,56 @@ class HomePage extends StatelessWidget {
         return controller;
       },
       child: Scaffold(
-          appBar: AppBar(
-            title: const Text('Google Maps Test'),
-            actions: [
-              // Builder(
-              //   builder: (context) => IconButton(
-              //     onPressed: () {
-              //       final controller = context.read<HomeController>();
-              //       controller.newPolyline();
-              //     },
-              //     icon: const Icon(Icons.add),
-              //   ),
-              // ),
-              // Builder(
-              //   builder: (context) => IconButton(
-              //     onPressed: () {
-              //       final controller = context.read<HomeController>();
-              //       controller.newPolygon();
-              //     },
-              //     icon: const Icon(Icons.map),
-              //   ),
-              // )
-              IconButton(
-                onPressed: (){
-                  _logout(context);
-                },
-                icon: const Icon(Icons.logout)
-              )
-            ],
-          ),
+          // appBar: AppBar(
+          //   title: const Text('Google Maps Test'),
+          //   actions: [
+          //     // Builder(
+          //     //   builder: (context) => IconButton(
+          //     //     onPressed: () {
+          //     //       final controller = context.read<HomeController>();
+          //     //       controller.newPolyline();
+          //     //     },
+          //     //     icon: const Icon(Icons.add),
+          //     //   ),
+          //     // ),
+          //     // Builder(
+          //     //   builder: (context) => IconButton(
+          //     //     onPressed: () {
+          //     //       final controller = context.read<HomeController>();
+          //     //       controller.newPolygon();
+          //     //     },
+          //     //     icon: const Icon(Icons.map),
+          //     //   ),
+          //     // )
+          //     IconButton(
+          //       onPressed: (){
+          //         _logout(context);
+          //       },
+          //       icon: const Icon(Icons.logout)
+          //     )
+          //   ],
+          // ),
           body: Selector<HomeController, bool>(
-              selector: (_, controller) => controller.loading,
-              builder: (context, loading, loadingWidget) {
-                if (loading) {
-                  return loadingWidget!;
-                }
+            selector: (_, controller) => controller.loading,
+            builder: (context, loading, loadingWidget) {
+              if (loading) {
+                return loadingWidget!;
+              }
 
-                return const MapView();
-              },
-              child: const Center(
-                child: CircularProgressIndicator(),
-              ))),
+              return const MapView();
+            },
+            child: const Center(
+              child: CircularProgressIndicator(),
+            )
+          ),
+          // floatingActionButtonLocation: FloatingActionButtonLocation.miniEndTop,
+          // floatingActionButton: FloatingActionButton.extended(
+          //   backgroundColor: const Color(0xFFFFFFFF),
+          //   onPressed: () => _logout(context),
+          //   label: const Text('Logout', style: TextStyle(color: Colors.black),),
+          //   icon: const Icon(Icons.logout, color: Colors.black,),
+          // ),
+      ),
     );
   }
 
@@ -101,7 +110,7 @@ class HomePage extends StatelessWidget {
                 'Accept',
                 style: TextStyle(color: Colors.black),
               ),
-              onPressed: () => Navigator.pop(context, Routes.SIGNIN),
+              onPressed: () => Navigator.of(context).pop(Routes.LOGIN),
             )
           ],
         );
