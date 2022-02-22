@@ -11,8 +11,6 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Provider.of<LoginController>(context);
-
     return SafeArea(
       child: Container(
         // decoration: const BoxDecoration(
@@ -36,7 +34,7 @@ class LoginPage extends StatelessWidget {
                 // const SizedBox(
                 //   height: 10.0,
                 // ),
-                _userrTextField(context),
+                _userTextField(context),
                 const SizedBox(
                   height: 2.0,
                 ),
@@ -55,7 +53,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _userrTextField(BuildContext context) {
+  Widget _userTextField(BuildContext context) {
     final controller = Provider.of<LoginController>(context);
 
     return StreamBuilder(

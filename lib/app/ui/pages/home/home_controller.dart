@@ -324,6 +324,7 @@ class HomeController extends ChangeNotifier {
     _positionSubscription?.cancel();
     _gpsSubscription?.cancel();
     _markersController.close();
+    _mapController!.dispose();
     super.dispose();
   }
 }

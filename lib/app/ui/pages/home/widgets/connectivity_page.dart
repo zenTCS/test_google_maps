@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_offline/flutter_offline.dart';
 import 'package:google_maps_test/app/ui/pages/connectivity/connection_status_model.dart';
 import 'package:provider/provider.dart';
 
